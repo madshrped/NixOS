@@ -5,6 +5,17 @@
     enable = true;
     settings.vim = {
 
+      autocmds = [
+        {
+          event = [
+            "BufRead"
+            "BufNewFile"
+          ];
+          pattern = [ "*.ino" ];
+          command = "set filetype=cpp";
+        }
+      ];
+
       treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         kdl
       ];
