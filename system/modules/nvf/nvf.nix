@@ -4,7 +4,6 @@
   programs.nvf = {
     enable = true;
     settings.vim = {
-
       autocmds = [
         {
           event = [
@@ -16,9 +15,12 @@
         }
       ];
 
-      treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        kdl
-      ];
+      treesitter = {
+        fold = false;
+        grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          kdl
+        ];
+      };
 
       theme = {
         enable = true;
@@ -59,8 +61,17 @@
         enableDAP = true;
 
         nix = import ./langs/nix.nix;
-        clang.enable = true;
-        python.enable = true;
+
+        clang = {
+          enable = true;
+        };
+
+        python = {
+          enable = true;
+          lsp.enable = false;
+        };
+
+        bash.enable = true;
         ts.enable = true;
       };
 
@@ -84,11 +95,16 @@
         cmdheight = 1;
         autoindent = true;
         cursorlineopt = "both";
-        shiftwidth = 0;
+        shiftwidth = 2;
         tabstop = 2;
+        softtabstop = 2;
         signcolumn = "yes";
         termguicolors = true;
         wrap = false;
+        foldcolumn = "1";
+        foldmethod = "indent";
+        foldenable = true;
+        foldlevelstart = 99;
       };
 
       statusline = {
@@ -100,7 +116,7 @@
         nvim-cursorline.enable = true; # Highlights the current cursor line
         cinnamon-nvim.enable = true; # Provides smooth scrolling animations
         fidget-nvim.enable = true; # Shows LSP progress notifications in the corner
-        #indent-blankline.enable = true; # Shows indentation guides and blank line markers
+        indent-blankline.enable = true; # Shows indentation guides and blank line markers
       };
 
       diagnostics.nvim-lint.enable = true;
@@ -119,6 +135,7 @@
 
       utility = {
         multicursors.enable = true;
+        nix-develop.enable = true;
         surround.enable = true;
         outline.aerial-nvim.enable = true;
         yazi-nvim = {
@@ -132,4 +149,8 @@
       };
     };
   };
+  environment.etc."clang-format".text = ''
+    BasedOnStyle: LLVM
+    ColumnLimit: 0
+  '';
 }

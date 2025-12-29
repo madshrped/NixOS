@@ -105,6 +105,10 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="python3.13"
+    open-floating true
+}
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
