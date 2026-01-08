@@ -9,6 +9,7 @@
       "wheel"
       "video"
       "dialout"
+      "docker"
     ];
     packages = with pkgs; [ ];
   };

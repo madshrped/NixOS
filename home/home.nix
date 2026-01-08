@@ -33,6 +33,7 @@ in
       nfsm-cli
       gdb
       clang
+      clang-tools
       ventoy-full
     ];
   };

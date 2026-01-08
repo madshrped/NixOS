@@ -5,7 +5,7 @@
     ./modules/fonts.nix
     ./modules/yazi.nix
     ./modules/nvf/nvf.nix
-    ./modules/nvf/langs/clangd.nix
+    ./modules/winboat.nix
   ];
 
   nixpkgs.config = {

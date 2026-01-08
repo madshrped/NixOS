@@ -6,6 +6,12 @@
     settings.vim = {
       autocmds = [
         {
+          event = [ "FileType" ];
+          pattern = [ "*" ];
+          command = "setlocal formatoptions-=crotq textwidth=0 nowrap";
+        }
+
+        {
           event = [
             "BufRead"
             "BufNewFile"
@@ -16,6 +22,7 @@
       ];
 
       treesitter = {
+        enable = true;
         fold = false;
         grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           kdl
@@ -55,7 +62,6 @@
       };
 
       languages = {
-        enableLSP = true;
         enableTreesitter = true;
         enableFormat = true;
         enableDAP = true;
@@ -76,6 +82,7 @@
       };
 
       lsp = {
+        enable = true;
         formatOnSave = true;
         inlayHints.enable = true;
         lightbulb.enable = true;
@@ -105,6 +112,7 @@
         foldmethod = "indent";
         foldenable = true;
         foldlevelstart = 99;
+        textwidth = 0;
       };
 
       statusline = {
@@ -149,8 +157,4 @@
       };
     };
   };
-  environment.etc."clang-format".text = ''
-    BasedOnStyle: LLVM
-    ColumnLimit: 0
-  '';
 }
