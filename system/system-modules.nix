@@ -6,6 +6,7 @@
     ./modules/yazi.nix
     ./modules/nvf/nvf.nix
     ./modules/winboat.nix
+    ./modules/ly.nix
   ];
 
   nixpkgs.config = {
@@ -28,6 +29,4 @@
   };
 
   programs.niri.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
 }

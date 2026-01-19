@@ -70,6 +70,7 @@
 
         clang = {
           enable = true;
+          lsp.enable = false;
         };
 
         python = {
