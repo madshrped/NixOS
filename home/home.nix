@@ -17,6 +17,7 @@ in
     ./modules/waybar/waybar.nix
     ./modules/fuzzel.nix
     ./modules/portals.nix
+    ./modules/network-gui.nix
   ];
 
   home = {

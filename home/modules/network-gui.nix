@@ -1,5 +1,5 @@
 {
-  programs.firefox = {
+  programs.nm-applet = {
     enable = true;
   };
 }
