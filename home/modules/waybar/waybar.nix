@@ -1,7 +1,7 @@
 {
   programs.waybar = {
     enable = true;
-    style = ./style.css;
+    style = ./mechabar/style.css;
   };
-  xdg.configFile."waybar/config.jsonc".source = ./config.jsonc;
+  xdg.configFile."waybar/config.jsonc".source = ./mechabar/config.jsonc;
 }
