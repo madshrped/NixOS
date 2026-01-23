@@ -4,5 +4,5 @@
     style = ./mechabar/style.css;
   };
   xdg.configFile."waybar/config.jsonc".source =
-    /home/mads/nixos/home/modules/waybar/mechabar/style.css;
+    /home/mads/nixos/home/modules/waybar/mechabar/config.jsonc;
 }
