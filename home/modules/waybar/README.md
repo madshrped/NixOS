@@ -1,167 +1,192 @@
 <div align="center">
 
-  # Mechabar 🤖
+## 🤖 mechabar
 
-  | ![Preview 1](assets/v1.0.0.png)                        |
-  | :----------------------------------------------------: |
+A mecha-themed, modular Waybar configuration.
 
-  <details>
-    <summary><strong>&nbsp;🚀 Rofi Menus</strong></summary>
-    <br />
+| ![Mechabar](./assets/catppuccin-mocha.png) |
+| :--------------------------------------: |
 
-  | 🛜 Wi-Fi and Bluetooth                                 |
-  | :----------------------------------------------------: |
-  | ![Wi-Fi Menu](assets/wifi-menu.png) <tr></tr>          |
-  | ![Bluetooth Menu](assets/bluetooth-menu.png) <tr></tr> |
-  | `on-click-right`: **`nmtui`**, **`bluetui`** <tr></tr> |
-  | ![Bluetooth Menu](assets/wifi-bluetooth-tui.png)       |
+<details>
+<summary>Themes</summary>
 
-  | ⏸️ Logout                                              |
-  | :----------------------------------------------------: |
-  | ![Logout Menu](assets/logout-menu.png)                 |
+<ins><b>Catppuccin:</b></ins>
 
-  </details>
+| Mocha (default)                                  |
+| :----------------------------------------------: |
+| ![Catppuccin Mocha](./assets/catppuccin-mocha.png) |
 
-  <!-- Dark Mode -->
+| Macchiato                                                |
+| :------------------------------------------------------: |
+| ![Catppuccin Macchiato](./assets/catppuccin-macchiato.png) |
 
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-dark-mode-only">
-    <img
-      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=1e1e2e&colorB=f9e2af&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-dark-mode-only">
-    <img
-      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=1e1e2e&colorB=a6e3a1&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-dark-mode-only">
-    <img
-      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=1e1e2e&colorB=b4befe&style=for-the-badge"
-  /></a>
+| Frappe                                             |
+| :------------------------------------------------: |
+| ![Catppuccin Frappe](./assets/catppuccin-frappe.png) |
 
-  <!-- Light Mode -->
+| Latte                                            |
+| :----------------------------------------------: |
+| ![Catppuccin Latte](./assets/catppuccin-latte.png) |
 
-  <a href="https://github.com/sejjy/mechabar/stargazers#gh-light-mode-only">
-    <img
-      src="https://img.shields.io/github/stars/sejjy/mechabar?colorA=cdd6f4&colorB=f9e2af&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/commits#gh-light-mode-only">
-    <img
-      src="https://img.shields.io/github/last-commit/sejjy/mechabar?colorA=cdd6f4&colorB=a6e3a1&style=for-the-badge"
-  /></a>
-  <a href="https://github.com/sejjy/mechabar/contributors#gh-light-mode-only">
-    <img
-      src="https://img.shields.io/github/contributors/sejjy/mechabar?colorA=cdd6f4&colorB=b4befe&style=for-the-badge"
-  /></a>
-</div>  
-<br />
+Feel free to open a pull request if you'd like to add themes! :^)
 
-A mecha-themed **[Waybar](https://github.com/Alexays/Waybar)** configuration initially designed for **[Hyprland](https://github.com/hyprwm/Hyprland)**, but also compatible with **Sway** and other **Wlroots-based compositors** with minimal adjustments. Contributions are welcome, including opening **[issues](https://github.com/sejjy/mechabar/issues)**, submitting **[pull requests](https://github.com/sejjy/mechabar/pulls)** for bug fixes or enhancements, and adding support for other distributions and compositors through new branches.
-
-## Installation (Arch Linux)
-
-### Automatic
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/sejjy/mechabar.git
-   cd mechabar
-   ```
-
-2. **Run the [install](/install.sh) script:**
-
-   ```bash
-   ./install.sh
-   ```
-
-   This backs up existing folders and installs all [dependencies](#i-dependencies), configuration files, and scripts.
+</details>
+</div>
 
 #
 
-### Manual
+### Prerequisites
 
-#### I. Dependencies
+1. **[Waybar](https://github.com/Alexays/Waybar)**
 
-```bash
-sudo pacman -S bluez-utils brightnessctl hyprlock pipewire pipewire-pulse python ttf-jetbrains-mono-nerd wireplumber
-```
+> [!WARNING]
+> **Waybar v0.14.0** introduced an [issue](https://github.com/Alexays/Waybar/issues/4354) that breaks [wildcard includes](./config.jsonc#L2-L9).
+> [Clone the `fix/v0.14.0` branch](#clone-fix-branch) as a temporary workaround.
 
-```bash
-yay -S bluetui rofi-lbonn-wayland-git
-```
-
-| Package                   | Description                                                                                         |
-| ------------------------- | --------------------------------------------------------------------------------------------------- |
-| `bluetui`                 | TUI for managing bluetooth devices <tr></tr>                                                        |
-| `bluez-utils`             | Development and debugging utilities for the bluetooth protocol stack <tr></tr>                      |
-| `brightnessctl`           | Lightweight brightness control tool <tr></tr>                                                       |
-| `hyprlock`                | Hyprland's GPU-accelerated screen locking utility <tr></tr>                                         |
-| `pipewire`                | Low-latency audio/video router and processor <tr></tr>                                              |
-| `pipewire-pulse`          | Low-latency audio/video router and processor - PulseAudio replacement <tr></tr>                     |
-| `python`                  | The Python programming language <tr></tr>                                                           |
-| `rofi-lbonn-wayland-git`  | A window switcher, application launcher and dmenu replacement (fork with Wayland support) <tr></tr> |
-| `ttf-jetbrains-mono-nerd` | Patched font JetBrains Mono from the nerd fonts library <tr></tr>                                   |
-| `wireplumber`             | Session/policy manager implementation for PipeWire                                                  |
+2. A **terminal emulator** (default: `kitty`)
 
 > [!IMPORTANT]
-> If you use alternatives, you may need to modify the [scripts](/scripts/) and configuration files accordingly.
+> If you use a different terminal emulator (e.g., `ghostty`),
+> you need to replace all invocations of `kitty` with your terminal command:
+>
+> ```diff
+> - "on-click": "kitty -e ..."
+> + "on-click": "ghostty -e ..."
+> ```
 
 #
 
-#### II. Installation
+### Installation
 
-1. **Clone the repository:**
+1. Back up your current config:
+
+	```bash
+	mv ~/.config/waybar{,.bak}
+	```
+
+2. Clone the repository:
+
+	```bash
+	git clone https://github.com/sejjy/mechabar.git ~/.config/waybar
+	```
+
+	<a name="clone-fix-branch">For **Waybar v0.14.0**</a>:
+
+	```bash
+	git clone -b fix/v0.14.0 https://github.com/sejjy/mechabar.git ~/.config/waybar
+	```
+
+3. Run [`install.sh`](./install.sh):
+
+	```bash
+	~/.config/waybar/install.sh
+	```
+
+	This makes the [scripts](./scripts/) executable and installs the following dependencies:
+
+	<details>
+	<summary>Packages (8)</summary>
+
+	| Package                | Command         | Description                                                                    |
+	| ---------------------- | --------------- | ------------------------------------------------------------------------------ |
+	| `bluez`                | -               | Daemons for the bluetooth protocol stack<tr></tr>                              |
+	| `bluez-utils`          | `bluetoothctl`  | Development and debugging utilities for the bluetooth protocol stack<tr></tr>  |
+	| `brightnessctl`        | `brightnessctl` | Lightweight brightness control tool<tr></tr>                                   |
+	| `fzf`                  | `fzf`           | Command-line fuzzy finder<tr></tr>                                             |
+	| `networkmanager`       | `nmcli`         | Network connection manager and user applications<tr></tr>                      |
+	| `pacman-contrib`       | `checkupdates`  | Contributed scripts and tools for pacman systems<tr></tr>                      |
+	| `pipewire-pulse`       | -               | Low-latency audio/video router and processor - PulseAudio replacement<tr></tr> |
+	| `otf-commit-mono-nerd` | -               | Patched font Commit Mono from nerd fonts library                               |
+
+	</details>
+
+#
+
+### Configuration
+
+<details>
+<summary>Binds</summary>
+
+You can set keybinds to interact with modules via [scripts](./scripts/). Example:
+
+```properties
+# ~/.config/hypr/hyprland.conf
+
+$mod  = SUPER
+$term = kitty
+$scr  = ~/.config/waybar/scripts
+
+bind = $mod, B, exec, $term -e $scr/bluetooth.sh
+bind = $mod, N, exec, $term -e $scr/network.sh
+bind = $mod, O, exec, $term -e $scr/power-menu.sh
+bind = $mod, U, exec, $term -e $scr/system-update.sh
+
+bindl  = , XF86AudioMicMute,      exec, $scr/volume.sh input mute
+bindl  = , XF86AudioMute,         exec, $scr/volume.sh output mute
+bindel = , XF86AudioLowerVolume,  exec, $scr/volume.sh output lower
+bindel = , XF86AudioRaiseVolume,  exec, $scr/volume.sh output raise
+bindel = , XF86MonBrightnessDown, exec, $scr/backlight.sh down
+bindel = , XF86MonBrightnessUp,   exec, $scr/backlight.sh up
+```
+
+#
+
+</details>
+
+<details>
+<summary>Icons</summary>
+
+You can search for icons on [Nerd Fonts: Cheat Sheet ↗](https://www.nerdfonts.com/cheat-sheet). Example:
+
+```
+battery charging
+```
+
+For consistency, most modules use icons from Material Design, prefixed with `nf-md`:
+
+```
+nf-md battery charging
+```
+
+See [Nerd Fonts wiki: Glyph Sets](https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points#glyph-sets) for more info.
+
+#
+
+</details>
+
+<details open>
+<summary>Theme</summary>
+
+Copy your preferred theme from the [themes](./themes/) directory into `theme.css`. Example:
+
+```bash
+cd ~/.config/waybar
+cp themes/catppuccin-latte.css theme.css
+```
+
+</details>
+
+#
+
+### Documentation
+
+- [Waybar wiki](https://github.com/Alexays/Waybar/wiki)
+
+- Man pages:
 
    ```bash
-   git clone https://github.com/sejjy/mechabar.git
-   cd mechabar
+   man waybar
+   man waybar-styles
+   man waybar-custom
+   man waybar-<module>
+   man waybar-<compositor>-<module>
    ```
 
-2. **Copy configuration files:**
+#
 
-   ```bash
-   mkdir -p ~/.config/waybar/
-   cp config.jsonc style.css theme.css ~/.config/waybar/
-   ```
+### References
 
-   ```bash
-   mkdir -p ~/.config/rofi
-   cp rofi/* ~/.config/rofi/
-   ```
-
-3. **Setup scripts:**
-
-   ```bash
-   mkdir -p ~/.config/waybar/scripts/
-   cp scripts/* ~/.config/waybar/scripts/
-   ```
-
-   ```bash
-   chmod +x ~/.config/waybar/scripts/*
-   ```
-
-4. **Restart Waybar to apply the changes:**
-
-   ```bash
-   killall waybar
-   nohup waybar >/dev/null 2>&1 &
-   ```
-
-## Customization
-
-- You can change the colors in [theme.css](/theme.css) and [theme.rasi](/rofi/theme.rasi) to match your system theme.
-- You can remove existing modules or add new ones from the [modules](/modules/) folder. For a complete list of available modules, visit the [Waybar Wiki](https://github.com/Alexays/Waybar/wiki).
-
-## Roadmap
-
-Here are some features and improvements planned for future versions:
-
-- [ ] Theme switcher
-- [x] Install script
-- [x] Rofi Bluetooth menu
-- [x] Rofi logout menu
-
-## Credits
-
-- The original files in the [modules](/modules/) folder are from [prasanthrangan / hyprdots](https://github.com/prasanthrangan/hyprdots).
-- Icons: [ryanoasis / nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-- Color palette: [catppuccin / catppuccin](https://github.com/catppuccin/catppuccin) (Mocha)
+- [Catppuccin Waybar theme](https://github.com/catppuccin/waybar)
+- [Commit Mono Font](https://github.com/eigilnikolajsen/commit-mono)
+- [CommitMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CommitMono)
+- [Hyprland wiki: Binds ↗](https://wiki.hypr.land/Configuring/Binds/)

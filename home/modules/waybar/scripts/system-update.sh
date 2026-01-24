@@ -1,72 +1,120 @@
 #!/usr/bin/env bash
+#
+# Check for official and AUR package updates and upgrade them. When run with the
+# "module" argument, output the status icon and update counts in JSON format for
+# Waybar
+#
+# Requirements:
+# - checkupdates (pacman-contrib)
+# - notify-send (libnotify)
+# - Optional: An AUR helper
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 16, 2025
+# License: MIT
 
-# Check release
-if [ ! -f /etc/arch-release ]; then
-  exit 0
-fi
+TIMEOUT=10
+HELPERS=("aura" "paru" "pikaur" "trizen" "yay")
 
-pkg_installed() {
-  local pkg=$1
-  if pacman -Qi "${pkg}" &>/dev/null; then
-    return 0
-  elif pacman -Qi "flatpak" &>/dev/null && flatpak info "${pkg}" &>/dev/null; then
-    return 0
-  elif command -v "${pkg}" &>/dev/null; then
-    return 0
-  else
-    return 1
-  fi
+FAILURE=false
+PAC_UPD=0
+AUR_UPD=0
+
+cprintf() {
+	case $1 in
+		green) printf "\e[32m" ;;
+		blue)  printf "\e[34m" ;;
+	esac
+
+	printf "%b%b\n" "${@:2}" "\e[39m" >&2
 }
 
-get_aur_helper() {
-  if pkg_installed yay; then
-    aur_helper="yay"
-  elif pkg_installed paru; then
-    aur_helper="paru"
-  fi
+get_helper() {
+	local h
+	for h in "${HELPERS[@]}"; do
+		if command -v "$h" > /dev/null; then
+			HELPER=$h
+			break
+		fi
+	done
 }
 
-get_aur_helper
-export -f pkg_installed
-flatpak_update_cmd="pkg_installed flatpak && flatpak update"
+check_updates() {
+	local pac_output pac_status
+	pac_output=$(timeout $TIMEOUT checkupdates)
+	pac_status=$?
 
-# Trigger upgrade
-if [ "$1" == "up" ]; then
-  trap 'pkill -RTMIN+20 waybar' EXIT
-  command="
-    $0 upgrade
-    ${aur_helper} -Syu
-    $flatpak_update_cmd
-    printf '\n'
-    read -n 1 -p 'Press any key to continue...'
-    "
-  kitty --title "󰞒  System Update" sh -c "${command}"
-fi
+	if ((pac_status != 0 && pac_status != 2)); then
+		FAILURE=true
+		return 1
+	fi
 
-# Check for AUR updates
-aur_updates=$(${aur_helper} -Qua | wc -l)
-official_updates=$(
-  (while pgrep -x checkupdates >/dev/null; do sleep 1; done)
-  checkupdates | wc -l
-)
+	PAC_UPD=$(grep -cve "^\s*$" <<< "$pac_output")
 
-# Check for Flatpak updates
-if pkg_installed flatpak; then
-  flatpak_updates=$(flatpak remote-ls --updates | wc -l)
-else
-  flatpak_updates=0
-fi
+	[[ -z $HELPER ]] && return 0
 
-# Calculate total available updates
-total_updates=$((official_updates + aur_updates + flatpak_updates))
+	local aur_output aur_status
+	aur_output=$(timeout $TIMEOUT "$HELPER" -Quaq)
+	aur_status=$?
 
-[ "${1}" == upgrade ] && printf "Official:   %-10s\nAUR ($aur_helper):  %-10s\nFlatpak:    %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
+	if ((${#aur_output} > 0 && aur_status != 0)); then
+		FAILURE=true
+		return 1
+	fi
 
-tooltip="Official:   $official_updates\nAUR ($aur_helper):  $aur_updates\nFlatpak:    $flatpak_updates"
+	AUR_UPD=$(grep -cve "^\s*$" <<< "$aur_output")
+}
 
-# Module and tooltip
-if [ $total_updates -eq 0 ]; then
-  echo "{\"text\":\"󰸟\", \"tooltip\":\"Packages are up to date\"}"
-else
-  echo "{\"text\":\"󰞒\", \"tooltip\":\"${tooltip}\"}"
-fi
+update_packages() {
+	cprintf blue "Updating pacman packages..."
+	sudo pacman -Syu
+
+	if [[ -n $HELPER ]]; then
+		cprintf blue "\nUpdating AUR packages..."
+		"$HELPER" -Syu
+	fi
+
+	notify-send "Update Complete" -i "package-install"
+
+	cprintf green "\nUpdate Complete!"
+	read -rsn 1 -p "Press any key to exit..."
+}
+
+display_module() {
+	if $FAILURE; then
+		echo "{ \"text\": \"󰒑\", \"tooltip\": \"Cannot fetch updates. Right-click to retry.\" }"
+		exit 0
+	fi
+
+	local tooltip="<b>Official</b>: $PAC_UPD"
+
+	if [[ -n $HELPER ]]; then
+		tooltip+="\n<b>AUR($HELPER)</b>: $AUR_UPD"
+	fi
+
+	if ((PAC_UPD + AUR_UPD == 0)); then
+		echo "{ \"text\": \"󰸟\", \"tooltip\": \"No updates available\" }"
+	else
+		echo "{ \"text\": \"󰄠\", \"tooltip\": \"$tooltip\" }"
+	fi
+}
+
+main() {
+	get_helper
+
+	case $1 in
+		"module")
+			check_updates
+			display_module
+			;;
+		*)
+			cprintf blue "Checking for updates..."
+			check_updates
+
+			update_packages
+			pkill -RTMIN+1 waybar
+			;;
+	esac
+}
+
+main "$@"

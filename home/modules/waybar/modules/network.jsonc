@@ -1,18 +1,40 @@
 {
-  "network": {
-    "tooltip": true,
-    "format-wifi": "󰤨 ",
-    
-    "format-ethernet": "󰈀 ",
-
-    "tooltip-format": 
-      "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-      
-    "format-linked": "󰈀 {ifname} (No IP)",
-    "format-disconnected": "󰤮 ",
-    "tooltip-format-disconnected": "Disconnected",
-    "format-alt": 
-      "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-    "interval": 2
-  }
+	"network": {
+		// "interface":
+		// "rfkill":
+		"interval": 10,
+		// "family":
+		"format": "󰤨",
+		"format-ethernet": "󰈀",
+		"format-wifi": "{icon}",
+		// "format-linked":
+		"format-disconnected": "󰤯",
+		"format-disabled": "󰤮",
+		// "format-alt":
+		"format-icons": [
+			"󰤟", "󰤢", "󰤥", "󰤨"
+		],
+		// "rotate":
+		"min-length": 2,
+		"max-length": 2,
+		// "align":
+		// "justify":
+		"on-click": "kitty -e ~/.config/waybar/scripts/network.sh",
+		// "on-click-middle":
+		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -h string:x-canonical-private-synchronous:network",
+		// "on-update":
+		// "on-scroll-up":
+		// "on-scroll-down":
+		// "smooth-scrolling-threshold":
+		// "tooltip":
+		"tooltip-format": "<b>Gateway</b>: {gwaddr}",
+		"tooltip-format-ethernet": "<b>Interface</b>: {ifname}",
+		"tooltip-format-wifi": "<b>Network</b>: {essid}\n<b>IP Addr</b>: {ipaddr}/{cidr}\n<b>Strength</b>: {signalStrength}%\n<b>Frequency</b>: {frequency} GHz",
+		"tooltip-format-disconnected": "Wi-Fi Disconnected",
+		"tooltip-format-disabled": "Wi-Fi Disabled"
+		// "menu":
+		// "menu-file":
+		// "menu-actions":
+		// "expand":
+	}
 }
