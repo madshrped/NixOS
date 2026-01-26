@@ -35,7 +35,7 @@ in
       gdb
       clang
       clang-tools
-      ventoy-full
+      #      ventoy-full
       networkmanagerapplet
     ];
   };
