@@ -47,7 +47,7 @@
       url_style = "curly";
     };
 
-    theme = "Gruvbox Dark Hard";
+    themeFile = "gruvbox-dark-hard";
 
     keybindings = {
       "ctrl+shift+c" = "copy_to_clipboard";

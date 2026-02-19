@@ -29,7 +29,7 @@ input {
 }
 
 layout {
-    gaps 12  
+    gaps 10  
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
@@ -59,7 +59,7 @@ layout {
 }
     
     shadow {
-        on
+        off 
         draw-behind-window false 
         softness 5 
         spread 5 
@@ -68,8 +68,8 @@ layout {
     }
     
     struts {
-        left 8 
-        right 8 
+        left 4 
+        right 4 
         top 0
         bottom 0 
     }
@@ -86,7 +86,7 @@ hotkey-overlay {
 screenshot-path "~/Screenshots/%Y-%m-%d %H-%M-%S.png"
 
 animations {
-     slowdown 1.4
+     slowdown 1.4 
 }
 
 window-rule {

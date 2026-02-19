@@ -35,8 +35,8 @@ in
       gdb
       clang
       clang-tools
-      #      ventoy-full
       networkmanagerapplet
+      steam-run
     ];
   };
 
