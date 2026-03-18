@@ -37,6 +37,9 @@ in
       clang-tools
       networkmanagerapplet
       steam-run
+      vlc
+      cmake
+      gnumake
     ];
   };
 

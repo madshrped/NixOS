@@ -29,7 +29,7 @@ input {
 }
 
 layout {
-    gaps 10  
+    gaps 8 
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
@@ -42,10 +42,8 @@ layout {
     }
     
     focus-ring {
-	
         width 2 
-	active-gradient from="#427b58" to="#427b58" angle=65 relative-to="workspace-view"
-        
+	      active-gradient from="#427b58" to="#427b58" angle=65 relative-to="workspace-view"
         inactive-gradient from="#d79921" to="#d79921" angle=45 relative-to="workspace-view"
 
     }
@@ -54,9 +52,8 @@ layout {
         width 3
         urgent-color "#9d0006"
         active-gradient from="#427b58" to="#427b58" angle=65 relative-to="workspace-view"
-
-	inactive-gradient from="#d79921" to="#d79921" angle=65 relative-to="workspace-view"
-}
+      	inactive-gradient from="#d79921" to="#d79921" angle=65 relative-to="workspace-view"
+    }
     
     shadow {
         off 
@@ -69,7 +66,7 @@ layout {
     
     struts {
         left 4 
-        right 4 
+        right 4
         top 0
         bottom 0 
     }
@@ -102,6 +99,11 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="main" title="Pool"
     open-floating true
 }
 
@@ -254,11 +256,11 @@ binds {
 
     Mod+Ctrl+C { center-visible-columns; }
     
-    Mod+Minus { set-column-width "-10%"; }
+    Mod+0 { set-column-width "-10%"; }
     Mod+Plus { set-column-width "+10%"; }
 
     
-    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+0 { set-window-height "-10%"; }
     Mod+Shift+Plus { set-window-height "+10%"; }
 
     

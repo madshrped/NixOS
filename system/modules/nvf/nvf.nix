@@ -1,9 +1,14 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.nvf = {
     enable = true;
     settings.vim = {
+      extraLuaFiles = lib.filter (f: lib.hasSuffix ".lua" f) (lib.filesystem.listFilesRecursive ./lua);
       autocmds = [
         {
           event = [ "FileType" ];
