@@ -17,6 +17,7 @@ in
     ./modules/waybar/waybar.nix
     ./modules/fuzzel.nix
     ./modules/portals.nix
+    ./modules/plasma.nix
   ];
 
   home = {
