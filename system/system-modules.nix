@@ -7,6 +7,7 @@
     ./modules/nvf/nvf.nix
     ./modules/winboat.nix
     ./modules/ly.nix
+    ./modules/plasma.nix
   ];
 
   nixpkgs.config = {
