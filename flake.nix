@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     nfsm-flake = {
       url = "github:gvolpe/nfsm";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +32,7 @@
     inputs@{
       nixpkgs,
       home-manager,
+      plasma-manager,
       nvf,
       ...
     }:
@@ -54,6 +61,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.mads = ./home/home.nix;
+                sharedModules = [
+                  plasma-manager.homeManagerModules.plasma-manager
+                ];
                 extraSpecialArgs = {
                   inherit system;
                   inherit inputs;
