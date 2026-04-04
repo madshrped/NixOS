@@ -62,7 +62,7 @@
                 useUserPackages = true;
                 users.mads = ./home/home.nix;
                 sharedModules = [
-                  plasma-manager.homeManagerModules.plasma-manager
+                  plasma-manager.homeModules.plasma-manager
                 ];
                 extraSpecialArgs = {
                   inherit system;

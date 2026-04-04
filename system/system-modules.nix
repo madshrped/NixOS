@@ -6,7 +6,7 @@
     ./modules/yazi.nix
     ./modules/nvf/nvf.nix
     ./modules/winboat.nix
-    ./modules/ly.nix
+    ./modules/ly/ly.nix
     ./modules/plasma.nix
   ];
 
@@ -22,6 +22,7 @@
       wget
       xwayland-satellite
       wl-clipboard
+      kdePackages.partitionmanager
     ];
 
     variables = {
