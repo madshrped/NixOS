@@ -6,7 +6,7 @@
     ./modules/yazi.nix
     ./modules/nvf/nvf.nix
     ./modules/winboat.nix
-    ./modules/ly/ly.nix
+    ./modules/ly.nix
     ./modules/plasma.nix
   ];
 
