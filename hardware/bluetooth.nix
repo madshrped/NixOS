@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{ ... }:
 
 {
   hardware.bluetooth = {
@@ -9,12 +9,12 @@
         Experimental = true;
         FastConnectable = true;
       };
-  
+
       Policy = {
         AutoEnable = true;
       };
     };
   };
-  
+
   services.blueman.enable = true;
 }

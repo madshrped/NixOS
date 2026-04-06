@@ -8,8 +8,7 @@
     ./modules/winboat.nix
     ./modules/ly.nix
     ./modules/plasma.nix
-    ./modules/niri-environment/niri.nix
-    ./modules/niri-environment/noctalia.nix
+    ./modules/niri.nix
   ];
 
   nixpkgs.config = {
@@ -25,6 +24,7 @@
       xwayland-satellite
       wl-clipboard
       kdePackages.partitionmanager
+      noctalia-shell
     ];
 
     variables = {

@@ -1,13 +1,7 @@
 {
   pkgs,
-  inputs,
-  system,
   ...
 }:
-
-let
-  inherit (inputs.nfsm-flake.packages.${system}) nfsm nfsm-cli;
-in
 {
   imports = [
     ./modules/git.nix
@@ -18,7 +12,6 @@ in
     ./modules/fuzzel.nix
     ./modules/portals.nix
     ./modules/plasma.nix
-    ./modules/noctalia.nix
   ];
 
   home = {
@@ -32,8 +25,6 @@ in
       discord
       swaybg
       geckodriver
-      nfsm
-      nfsm-cli
       gdb
       clang
       clang-tools

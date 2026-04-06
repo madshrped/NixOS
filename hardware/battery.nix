@@ -1,3 +1,4 @@
+{ ... }:
 {
   services = {
     tuned.enable = true;

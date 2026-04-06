@@ -17,11 +17,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nfsm-flake = {
-      url = "github:gvolpe/nfsm";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
