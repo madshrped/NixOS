@@ -2,7 +2,6 @@ input {
     keyboard {
         xkb {
         }
-
         numlock
     }
     
@@ -11,11 +10,9 @@ input {
         natural-scroll
         scroll-method "two-finger"
     }
-
     mouse {
         natural-scroll
     }
-
     trackpoint {
     
     }
@@ -35,6 +32,7 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 1.0
     }
     
     default-column-width {
@@ -72,9 +70,13 @@ layout {
     }
 }
 
-spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/mads/Pictures/wallpaper.png"
-spawn-sh-at-startup "nfsm"
+//spawn-at-startup "waybar"
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+debug {
+  honor-xdg-activation-with-invalid-serial
+}
+
 prefer-no-csd
 
 hotkey-overlay {
@@ -116,6 +118,10 @@ window-rule {
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
+}
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
 }
 
 window-rule {

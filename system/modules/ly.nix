@@ -2,6 +2,7 @@
   services.displayManager.ly = {
     enable = true;
     settings = {
+      save = true;
       animate = true;
       animation = "gameoflife";
       bigclock = true;

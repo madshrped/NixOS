@@ -1,12 +1,8 @@
-{ config, pkgs, ... }:
-
 {
   system.stateVersion = "25.05";
   system.autoUpgrade.enable = true;
 
   security.pam.services.swaylock = { };
-
-  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Copenhagen";
 

@@ -18,6 +18,7 @@ in
     ./modules/fuzzel.nix
     ./modules/portals.nix
     ./modules/plasma.nix
+    ./modules/noctalia.nix
   ];
 
   home = {
