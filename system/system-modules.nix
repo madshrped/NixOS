@@ -9,7 +9,6 @@
     ./modules/ly.nix
     ./modules/plasma.nix
     ./modules/niri.nix
-    ./modules/noctalia.nix
   ];
 
   nixpkgs.config = {
