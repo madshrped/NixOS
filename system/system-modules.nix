@@ -8,6 +8,8 @@
     ./modules/winboat.nix
     ./modules/ly.nix
     ./modules/plasma.nix
+    ./modules/niri-environment/niri.nix
+    ./modules/niri-environment/noctalia.nix
   ];
 
   nixpkgs.config = {
@@ -29,6 +31,4 @@
       EDITOR = "nvim";
     };
   };
-
-  programs.niri.enable = true;
 }
