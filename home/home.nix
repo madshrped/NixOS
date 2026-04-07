@@ -24,16 +24,15 @@
       signal-desktop
       fastfetch
       discord
-      swaybg
       geckodriver
       gdb
       clang
       clang-tools
-      networkmanagerapplet
       steam-run
       vlc
       cmake
       gnumake
+      pywalfox-native
     ];
   };
 

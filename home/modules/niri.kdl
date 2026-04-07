@@ -40,14 +40,14 @@ layout {
     }
     
     focus-ring {
-        width 2 
+        width 1 
 	      active-gradient from="#427b58" to="#427b58" angle=65 relative-to="workspace-view"
         inactive-gradient from="#d79921" to="#d79921" angle=45 relative-to="workspace-view"
 
     }
 
     border {
-        width 3
+        width 1
         urgent-color "#9d0006"
         active-gradient from="#427b58" to="#427b58" angle=65 relative-to="workspace-view"
       	inactive-gradient from="#d79921" to="#d79921" angle=65 relative-to="workspace-view"
@@ -71,7 +71,7 @@ layout {
 }
 
 //spawn-at-startup "waybar"
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia-shell"
 
 debug {
   honor-xdg-activation-with-invalid-serial
