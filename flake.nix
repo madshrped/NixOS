@@ -73,16 +73,17 @@
                 extraSpecialArgs = {
                   inherit system;
                   inherit inputs;
+
                 };
               };
             }
 
             ./boot.nix
-            ./conf-variables.nix
 
             ./system/environment-variables.nix
             ./system/system-modules.nix
             ./system/system-settings.nix
+            ./system/system-args.nix
 
             ./nix/nix.nix
           ]

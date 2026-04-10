@@ -10,6 +10,8 @@ let
 in
 {
   imports = [
+    ./home-args.nix
+
     ./modules/git.nix
     ./modules/firefox.nix
     ./modules/swaylock.nix
