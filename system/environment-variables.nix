@@ -1,6 +1,9 @@
+{ config, ... }:
 {
   environment.variables = {
+    BROWSER = "firefox";
     EDITOR = "nvim";
-    NOCTALIA_CONFIG_PATH = "$HOME/nixos/home/modules/noctalia/noctalia-settings.json";
+    UTILS = "${config.home.homeDirectory}/nixos/utils/";
+    NOCTALIA_CONFIG_PATH = "${config.home.homeDirectory}/nixos/home/modules/noctalia/noctalia-settings.json";
   };
 }

@@ -78,9 +78,12 @@
             }
 
             ./boot.nix
+            ./conf-variables.nix
+
             ./system/environment-variables.nix
             ./system/system-modules.nix
             ./system/system-settings.nix
+
             ./nix/nix.nix
           ]
           ++ users
