@@ -25,9 +25,5 @@
       wl-clipboard
       kdePackages.partitionmanager
     ];
-
-    variables = {
-      EDITOR = "nvim";
-    };
   };
 }

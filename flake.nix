@@ -26,6 +26,11 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nfsm-flake = {
+      url = "github:gvolpe/nfsm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -73,6 +78,7 @@
             }
 
             ./boot.nix
+            ./system/environment-variables.nix
             ./system/system-modules.nix
             ./system/system-settings.nix
             ./nix/nix.nix

@@ -26,8 +26,9 @@ input {
 }
 
 layout {
-    gaps 8 
+    gaps 6 
     center-focused-column "never"
+    background-color "transparent"
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
@@ -70,8 +71,8 @@ layout {
     }
 }
 
-//spawn-at-startup "waybar"
 spawn-at-startup "noctalia-shell"
+spawn-sh-at-startup "nfsm" 
 
 debug {
   honor-xdg-activation-with-invalid-serial
@@ -113,15 +114,12 @@ window-rule {
     match app-id="python3.13"
     open-floating true
 }
+
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
-}
-layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
 }
 
 window-rule {
@@ -139,22 +137,28 @@ binds {
     Mod+Shift+Aring { show-hotkey-overlay; }
     
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Run an Application: Fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: Swaylock" { spawn "swaylock"; }
+    Mod+Space hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle";}
     
     Super+Y hotkey-overlay-title="Open a filemanager: Yazi" { spawn "kitty" "yazi"; }
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; } 
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute         allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     
-    XF86MonBrightnessUp     allow-when-locked=true { spawn "xbacklight" "-inc" "5"; }
-    XF86MonBrightnessDown     allow-when-locked=true { spawn "xbacklight" "-dec" "5"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "xbacklight" "-inc" "5"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "xbacklight" "-dec" "5"; }
     
     Mod+O repeat=false { toggle-overview; }
 
     Mod+Q repeat=false { close-window; }
+
+    Mod+P hotkey-overlay-title="Control Center: Noctalia" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+    Mod+S hotkey-overlay-title="Open settings: Noctalia" { spawn-sh "noctalia-shell ipc call settings toggle"; }
+    Mod+E{ spawn-sh "noctalia-shell ipc call launcher emoji"; }
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+    Mod+N { spawn-sh "noctalia-shell ipc call network togglePanel"; }
+    Mod+B { spawn-sh "noctalia-shell ipc call bluetooth togglePanel"; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-or-workspace-down; }
@@ -164,7 +168,6 @@ binds {
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
     Mod+L     { focus-column-right; }
-
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+Up    { move-window-up-or-to-workspace-up; }

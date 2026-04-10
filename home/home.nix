@@ -1,14 +1,19 @@
 {
   pkgs,
+  inputs,
+  system,
   ...
 }:
+
+let
+  inherit (inputs.nfsm-flake.packages.${system}) nfsm nfsm-cli;
+in
 {
   imports = [
     ./modules/git.nix
     ./modules/firefox.nix
     ./modules/swaylock.nix
     ./modules/kitty.nix
-    ./modules/waybar/waybar.nix
     ./modules/fuzzel.nix
     ./modules/portals.nix
     ./modules/plasma.nix
@@ -25,14 +30,19 @@
       fastfetch
       discord
       geckodriver
+
       gdb
       clang
       clang-tools
+
       steam-run
       vlc
       cmake
       gnumake
       pywalfox-native
+
+      nfsm
+      nfsm-cli
     ];
   };
 

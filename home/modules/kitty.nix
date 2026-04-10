@@ -31,7 +31,7 @@
       mouse_hide_wait = "0.5";
       background_opacity = "0.7";
       window_padding_width = "5";
-      background_blur = 0;
+      background_blur = 50;
       allow_hyperlinks = 1;
 
       adjust_line_height = "130%";
