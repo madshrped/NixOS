@@ -14,4 +14,5 @@ in
     enable = true;
     settings = builtins.fromJSON (builtins.readFile config_path);
   };
+  xdg.configFile."noctalia/settings.json".force = true;
 }

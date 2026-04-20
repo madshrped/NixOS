@@ -15,7 +15,7 @@
     "enableExclusionZoneInset": true,
     "backgroundOpacity": 0.47000000000000003,
     "useSeparateOpacity": false,
-    "marginVertical": 6,
+    "marginVertical": 5,
     "marginHorizontal": 6,
     "frameThickness": 8,
     "frameRadius": 12,
@@ -351,7 +351,7 @@
     "customLaunchPrefixEnabled": false,
     "customLaunchPrefix": "",
     "viewMode": "list",
-    "showCategories": false,
+    "showCategories": true,
     "iconMode": "tabler",
     "showIconBackground": false,
     "enableSettingsSearch": true,
@@ -360,7 +360,7 @@
     "ignoreMouseInput": false,
     "screenshotAnnotationTool": "",
     "overviewLayer": false,
-    "density": "comfortable"
+    "density": "default"
   },
   "controlCenter": {
     "position": "center",

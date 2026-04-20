@@ -14,6 +14,7 @@ in
 
     ./modules/git.nix
     ./modules/firefox.nix
+    ./modules/zen-browser.nix
     ./modules/swaylock.nix
     ./modules/kitty.nix
     ./modules/fuzzel.nix

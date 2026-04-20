@@ -1,9 +1,17 @@
 { config, ... }:
+let
+  home = config.users.users.mads.home;
+in
 {
-  environment.variables = {
-    BROWSER = "firefox";
-    EDITOR = "nvim";
-    UTILS = "${config.home.homeDirectory}/nixos/utils/";
-    NOCTALIA_SETTINGS_PATH = "${config.home.homeDirectory}/nixos/home/modules/noctalia/noctalia-setting.json";
+  environment = {
+    variables = {
+      BROWSER = "firefox";
+      EDITOR = "nvim";
+    };
+
+    sessionVariables = {
+      UTILS = "${home}/nixos/utils/";
+      NOCTALIA_SETTINGS_PATH = "${home}/nixos/home/modules/noctalia/noctalia-settings.json";
+    };
   };
 }

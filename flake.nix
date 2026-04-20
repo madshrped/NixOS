@@ -22,6 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,8 +43,8 @@
     inputs@{
       nixpkgs,
       home-manager,
-      noctalia,
       plasma-manager,
+      zen-browser,
       nvf,
       ...
     }:
@@ -67,14 +73,16 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.mads = ./home/home.nix;
-                sharedModules = [
-                  plasma-manager.homeModules.plasma-manager
-                ];
+
                 extraSpecialArgs = {
                   inherit system;
                   inherit inputs;
-
                 };
+
+                sharedModules = [
+                  zen-browser.homeModules.twilight
+                  plasma-manager.homeModules.plasma-manager
+                ];
               };
             }
 
