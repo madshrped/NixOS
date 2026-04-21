@@ -2,8 +2,6 @@
   system.stateVersion = "25.05";
   system.autoUpgrade.enable = true;
 
-  security.pam.services.swaylock = { };
-
   time.timeZone = "Europe/Copenhagen";
 
   i18n.defaultLocale = "en_DK.UTF-8";
