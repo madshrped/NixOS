@@ -85,6 +85,8 @@
             ./system/system-settings.nix
             ./system/system-args.nix
 
+            ./utils/utils.nix
+
             ./nix/nix.nix
           ]
           ++ users

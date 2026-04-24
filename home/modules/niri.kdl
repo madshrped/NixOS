@@ -138,9 +138,11 @@ binds {
     
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle";}
+    Mod+Space hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle";}
     
-    Super+Y hotkey-overlay-title="Open a filemanager: Yazi" { spawn "kitty" "yazi"; }
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; } 
+    Mod+Y hotkey-overlay-title="Open a filemanager: Yazi" { spawn "kitty" "yazi"; }
+    Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; } 
+
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
     XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
     XF86AudioMute         allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -155,10 +157,16 @@ binds {
 
     Mod+P hotkey-overlay-title="Control Center: Noctalia" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Mod+S hotkey-overlay-title="Open settings: Noctalia" { spawn-sh "noctalia-shell ipc call settings toggle"; }
-    Mod+E{ spawn-sh "noctalia-shell ipc call launcher emoji"; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+    Mod+E { spawn-sh "noctalia-shell ipc call launcher emoji"; }
+    Mod+Asterisk hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
     Mod+N { spawn-sh "noctalia-shell ipc call network togglePanel"; }
     Mod+B { spawn-sh "noctalia-shell ipc call bluetooth togglePanel"; }
+
+    Mod+Alt+Space {spawn-sh "noctalia-shell ipc call media playPause"; }
+    Mod+Alt+Left {spawn-sh "noctalia-shell ipc call media previous"; }
+    Mod+Alt+Right {spawn-sh "noctalia-shell ipc call media next"; }
+    Mod+Alt+H {spawn-sh "noctalia-shell ipc call media previous"; }
+    Mod+Alt+L {spawn-sh "noctalia-shell ipc call media next"; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-or-workspace-down; }

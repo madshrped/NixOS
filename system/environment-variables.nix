@@ -12,6 +12,7 @@ in
     sessionVariables = {
       UTILS = "${home}/nixos/utils/";
       NOCTALIA_SETTINGS_PATH = "${home}/nixos/home/modules/noctalia/noctalia-settings.json";
+      PLASMA_CONFIG_PATH = "${home}/nixos/home/modules/plasma.nix";
     };
   };
 }
