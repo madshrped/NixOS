@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -9,6 +9,7 @@
     ./modules/ly.nix
     ./modules/plasma.nix
     ./modules/niri.nix
+    ./modules/bash/bash.nix
   ];
 
   nixpkgs.config = {

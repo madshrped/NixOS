@@ -84,7 +84,7 @@
         };
 
         bash.enable = true;
-        ts.enable = true;
+        typescript.enable = true;
       };
 
       lsp = {
