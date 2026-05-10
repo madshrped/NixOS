@@ -1,10 +1,22 @@
-{ lib, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
+    autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+      ];
+      theme = "gozilla";
+    };
 
     shellAliases = {
       "yy" = "yazi";
@@ -12,7 +24,13 @@
       "plasma-update" = "/home/mads/nixos/utils/update-plasma-config.bash";
     };
 
-    initContent = ''
+    histSize = 10000;
+    histFile = "$HOME/.zsh_history";
+    setOptions = [
+      "HIST_IGNORE_ALL_DUPS"
+    ];
+
+    shellInit = ''
       ${lib.concatStrings (
         builtins.map (file: builtins.readFile file) (
           builtins.map (name: ./addons + "/${name}") (
@@ -21,5 +39,12 @@
         )
       )}
     '';
+
+    interactiveShellInit = ''
+      unsetopt INTERACTIVE_COMMENTS
+      setopt NO_INTERACTIVE_COMMENTS
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+    '';
+
   };
 }
