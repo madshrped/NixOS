@@ -9,7 +9,7 @@
     ./modules/ly.nix
     ./modules/plasma.nix
     ./modules/niri.nix
-    ./modules/bash/bash.nix
+    ./modules/shell/zsh.nix
   ];
 
   nixpkgs.config = {

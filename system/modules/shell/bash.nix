@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   programs.bash = {
-    enable = true;
+    enable = false;
     undistractMe = {
       enable = true;
       playSound = true;

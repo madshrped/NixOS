@@ -31,10 +31,6 @@
       url = "github:gvolpe/nfsm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    yazi = {
-      url = "github:sxyazi/yazi";
-    };
   };
 
   outputs =
@@ -43,7 +39,6 @@
       home-manager,
       plasma-manager,
       nvf,
-      yazi,
       ...
     }:
 

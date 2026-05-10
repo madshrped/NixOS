@@ -1,10 +1,12 @@
 KeyD
+
 Split niri config
 Niri flake
-plasma utils
+
 Neovim multicursor
 Neovim ctrl+del
-Yazi
+
+Yazi /more-cool-plugins
 Zsh
 
 
