@@ -100,15 +100,6 @@
       ],
       "right": [
         {
-          "blacklist": [],
-          "chevronColor": "none",
-          "colorizeIcons": false,
-          "drawerEnabled": true,
-          "hidePassive": false,
-          "id": "Tray",
-          "pinned": []
-        },
-        {
           "applyToAllMonitors": false,
           "displayMode": "onhover",
           "iconColor": "none",
@@ -154,6 +145,7 @@
         {
           "colorizeDistroLogo": false,
           "colorizeSystemIcon": "none",
+          "colorizeSystemText": "none",
           "customIconPath": "",
           "enableColorization": false,
           "icon": "noctalia",
@@ -290,7 +282,7 @@
   },
   "wallpaper": {
     "enabled": true,
-    "overviewEnabled": false,
+    "overviewEnabled": true,
     "directory": "/home/mads/Pictures/Wallpapers",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
@@ -319,8 +311,8 @@
     "panelPosition": "center",
     "hideWallpaperFilenames": false,
     "useOriginalImages": false,
-    "overviewBlur": 0.4,
-    "overviewTint": 0.6,
+    "overviewBlur": 0,
+    "overviewTint": 0,
     "useWallhaven": false,
     "wallhavenQuery": "gruvbox",
     "wallhavenSorting": "relevance",
