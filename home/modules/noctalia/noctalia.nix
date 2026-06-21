@@ -3,16 +3,15 @@
   ...
 }:
 let
-  config_path = ./noctalia-settings.json;
+  config_path = "./noctalia-settings.toml";
 in
 {
   imports = [
     inputs.noctalia.homeModules.default
   ];
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
-    settings = builtins.fromJSON (builtins.readFile config_path);
+    settings = config_path;
   };
-  xdg.configFile."noctalia/settings.json".force = true;
 }
