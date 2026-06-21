@@ -11,7 +11,6 @@ input {
         scroll-method "two-finger"
     }
     mouse {
-        natural-scroll
     }
     trackpoint {
     
@@ -71,7 +70,7 @@ layout {
     }
 }
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 spawn-sh-at-startup "nfsm" 
 
 debug {

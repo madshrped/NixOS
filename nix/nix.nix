@@ -1,9 +1,7 @@
-{ pkgs, config, ... }:
-
 {
   nix = {
     gc = {
-      options = "--delete-older-than +5";
+      options = "--delete-older-than 14d";
       automatic = true;
       dates = "weekly";
     };

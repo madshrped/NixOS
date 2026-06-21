@@ -30,17 +30,18 @@ in
       signal-desktop
       fastfetch
       discord
+      vlc
       geckodriver
+
+      pywalfox-native
 
       gdb
       clang
       clang-tools
-
-      steam-run
-      vlc
       cmake
       gnumake
-      pywalfox-native
+
+      steam-run
 
       nfsm
       nfsm-cli

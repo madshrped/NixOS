@@ -10,12 +10,19 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
+    histSize = 10000;
+    histFile = "$HOME/.zsh_history";
+    setOptions = [
+      "HIST_IGNORE_ALL_DUPS"
+    ];
+
     ohMyZsh = {
       enable = true;
       plugins = [
         "git"
+
       ];
-      theme = "gozilla";
+      theme = "risto";
     };
 
     shellAliases = {
@@ -23,12 +30,6 @@
       "noctalia-update" = "~/home/mads/nixos/utils/update-noctalia-settings.bash/";
       "plasma-update" = "/home/mads/nixos/utils/update-plasma-config.bash";
     };
-
-    histSize = 10000;
-    histFile = "$HOME/.zsh_history";
-    setOptions = [
-      "HIST_IGNORE_ALL_DUPS"
-    ];
 
     shellInit = ''
       ${lib.concatStrings (
