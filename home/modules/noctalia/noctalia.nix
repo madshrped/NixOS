@@ -1,9 +1,10 @@
 {
   inputs,
+  lib,
   ...
 }:
 let
-  config_path = "./noctalia-settings.toml";
+  config_path = ./noctalia-settings.toml;
 in
 {
   imports = [
@@ -12,6 +13,6 @@ in
 
   programs.noctalia = {
     enable = true;
-    settings = config_path;
+    settings = lib.importTOML config_path;
   };
 }

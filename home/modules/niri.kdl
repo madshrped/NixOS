@@ -104,6 +104,27 @@ window-rule {
     open-floating true
 }
 
+//noctalia
+/-window-rule {
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+window-rule {
+  background-effect {
+    blur true
+    xray false
+  }
+}
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+  }
+}
+
+//aplications
 window-rule {
     match app-id="main" title="Pool"
     open-floating true
@@ -114,13 +135,7 @@ window-rule {
     open-floating true
 }
 
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-}
-
+//general
 window-rule {
     geometry-corner-radius 3  
     clip-to-geometry true 
@@ -136,8 +151,8 @@ binds {
     Mod+Shift+Aring { show-hotkey-overlay; }
     
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle";}
-    Mod+Space hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle";}
+    Mod+D hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia msg panel-toggle launcher";}
+    Mod+Space hotkey-overlay-title="Run an Application: Noctalia" { spawn-sh "noctalia msg panel-toggle launcher";}
     
     Mod+Y hotkey-overlay-title="Open a filemanager: Yazi" { spawn "kitty" "yazi"; }
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; } 
@@ -154,18 +169,18 @@ binds {
 
     Mod+Q repeat=false { close-window; }
 
-    Mod+P hotkey-overlay-title="Control Center: Noctalia" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-    Mod+S hotkey-overlay-title="Open settings: Noctalia" { spawn-sh "noctalia-shell ipc call settings toggle"; }
-    Mod+E { spawn-sh "noctalia-shell ipc call launcher emoji"; }
-    Mod+Asterisk hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
-    Mod+N { spawn-sh "noctalia-shell ipc call network togglePanel"; }
-    Mod+B { spawn-sh "noctalia-shell ipc call bluetooth togglePanel"; }
+    Mod+P hotkey-overlay-title="Control Center: Noctalia" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+S hotkey-overlay-title="Open settings: Noctalia" { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+E { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
+    Mod+Asterisk hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia msg session lock"; }
+    Mod+N { spawn-sh "noctalia msg panel-toggle control-center network"; }
+    Mod+B { spawn-sh "noctalia msg panel-toggle control-center bluetooth"; }
 
-    Mod+Alt+Space {spawn-sh "noctalia-shell ipc call media playPause"; }
-    Mod+Alt+Left {spawn-sh "noctalia-shell ipc call media previous"; }
-    Mod+Alt+Right {spawn-sh "noctalia-shell ipc call media next"; }
-    Mod+Alt+H {spawn-sh "noctalia-shell ipc call media previous"; }
-    Mod+Alt+L {spawn-sh "noctalia-shell ipc call media next"; }
+    Mod+Alt+Space {spawn-sh "noctalia msg media toggle"; }
+    Mod+Alt+Left {spawn-sh "noctalia msg media previous"; }
+    Mod+Alt+Right {spawn-sh "noctalia msg media next"; }
+    Mod+Alt+H {spawn-sh "noctalia msg media previous"; }
+    Mod+Alt+L {spawn-sh "noctalia msg media next"; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-or-workspace-down; }
