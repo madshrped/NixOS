@@ -11,6 +11,7 @@
       "video"
       "dialout"
       "docker"
+      "lpadmin"
     ];
     packages = with pkgs; [ ];
   };

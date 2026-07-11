@@ -10,6 +10,7 @@
     ./modules/plasma.nix
     ./modules/niri.nix
     ./modules/shell/zsh.nix
+    ./modules/printing.nix
   ];
 
   nixpkgs.config = {
