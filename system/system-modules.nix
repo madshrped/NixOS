@@ -11,6 +11,7 @@
     ./modules/niri.nix
     ./modules/shell/zsh.nix
     ./modules/printing.nix
+    ./modules/network-stuff.nix
   ];
 
   nixpkgs.config = {
@@ -26,6 +27,9 @@
       xwayland-satellite
       wl-clipboard
       kdePackages.partitionmanager
+
+      busybox
+      net-tools
     ];
   };
 }

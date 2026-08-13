@@ -45,6 +45,8 @@ in
 
       nfsm
       nfsm-cli
+
+      tetrio-desktop
     ];
   };
 

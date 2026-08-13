@@ -15,4 +15,10 @@ in
     type = "stdio";
     allowed_extensions = [ "pywalfox@frewacom.org" ];
   };
+
+  #librewolf
+  programs.librewolf = {
+    enable = true;
+    settings = { };
+  };
 }

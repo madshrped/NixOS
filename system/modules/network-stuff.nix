@@ -1,6 +1,9 @@
+{ pkgs, ... }:
 {
-  programs = {
-    busybox.enable = true;
-    net-tools.enable = true;
+  environment = {
+    systemPackages = with pkgs; [
+      net-tools
+      busybox
+    ];
   };
 }
