@@ -41,6 +41,8 @@ in
       cmake
       gnumake
 
+      kicad
+
       steam-run
 
       nfsm

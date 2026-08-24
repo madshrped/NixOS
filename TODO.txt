@@ -7,6 +7,6 @@ Neovim multicursor
 Neovim ctrl+del
 
 Yazi /more-cool-plugins
-Zsh
+- also shortcuts
 
-
+vi binds in termnial

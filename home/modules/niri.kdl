@@ -172,7 +172,7 @@ binds {
     Mod+P hotkey-overlay-title="Control Center: Noctalia" { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+S hotkey-overlay-title="Open settings: Noctalia" { spawn-sh "noctalia msg settings-toggle"; }
     Mod+E { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
-    Mod+Asterisk hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia msg session lock"; }
+    Mod+apostrophe hotkey-overlay-title="Lock the Screen: Noctalia" { spawn-sh "noctalia msg session lock"; }
     Mod+N { spawn-sh "noctalia msg panel-toggle control-center network"; }
     Mod+B { spawn-sh "noctalia msg panel-toggle control-center bluetooth"; }
 
