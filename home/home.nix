@@ -42,6 +42,8 @@ in
       gnumake
 
       kicad
+      arduino-cli
+      arduino-ide
 
       steam-run
 

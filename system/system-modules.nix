@@ -12,7 +12,8 @@
     ./modules/shell/zsh.nix
     ./modules/printing.nix
     ./modules/network-stuff.nix
-    ./modules/keyd/keyd.nix
+    ./modules/btop.nix
+    #./modules/keyd/keyd.nix
   ];
 
   nixpkgs.config = {

@@ -1,9 +1,11 @@
 {
-  services.keyd.keyboards = {
+  services.keyd = {
     enable = true;
-    default = {
-      ids = [ "*" ];
-      settings = import ./keyboards/key_default.nix;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = import ./keyboards/key_default.nix;
+      };
     };
   };
 }
