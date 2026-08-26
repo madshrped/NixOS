@@ -11,14 +11,15 @@ in
 {
   imports = [
     ./home-args.nix
-
+    ./modules/btop.nix
     ./modules/git.nix
     ./modules/firefox.nix
     ./modules/kitty.nix
-    ./modules/fuzzel.nix
     ./modules/portals.nix
     ./modules/plasma.nix
     ./modules/noctalia/noctalia.nix
+
+    ./modules/bambu-lab.nix
   ];
 
   home = {
