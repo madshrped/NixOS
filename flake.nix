@@ -23,8 +23,7 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia/cachix";
     };
 
     nfsm-flake = {
@@ -50,6 +49,9 @@
       );
       hardware = builtins.map (name: import (./hardware/${name})) (
         builtins.attrNames (builtins.readDir ./hardware)
+      );
+      flatpaks = builtins.map (name: import (./flatpaks/${name})) (
+        builtins.attrNames (builtins.readDir ./flatpaks)
       );
 
     in
@@ -88,7 +90,8 @@
             ./nix/nix.nix
           ]
           ++ users
-          ++ hardware;
+          ++ hardware
+          ++ flatpaks;
         };
       };
     };

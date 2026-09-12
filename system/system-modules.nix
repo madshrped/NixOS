@@ -12,7 +12,6 @@
     ./modules/shell/zsh.nix
     ./modules/printing.nix
     ./modules/network-stuff.nix
-    ./modules/btop.nix
     #./modules/keyd/keyd.nix
   ];
 
@@ -20,6 +19,7 @@
     allowUnfree = true;
     permittedInsecurePackages = [
       "ventoy-1.1.07"
+      "electron-40.10.5"
     ];
   };
   environment = {

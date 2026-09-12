@@ -1,15 +1,15 @@
 { pkgs, ... }:
 {
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "Canon_TS5300_series";
-        location = "Home";
-        deviceUri = "ipp://325903000000.local:631/ipp/print";
-        model = "everywhere";
-      }
-    ];
-  };
+  #  hardware.printers = {
+  #    ensurePrinters = [
+  #  {
+  #    name = "Canon_TS5300_series";
+  #        location = "Home";
+  #        deviceUri = "ipp://325903000000.local:631/ipp/print";
+  #        model = "everywhere";
+  #      }
+  #    ];
+  #  };
 
   services = {
     printing = {

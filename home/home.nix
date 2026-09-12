@@ -18,8 +18,6 @@ in
     ./modules/portals.nix
     ./modules/plasma.nix
     ./modules/noctalia/noctalia.nix
-
-    ./modules/bambu-lab.nix
   ];
 
   home = {
