@@ -26,6 +26,10 @@
       url = "github:noctalia-dev/noctalia/cachix";
     };
 
+    flatpaks = {
+      nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
+
     nfsm-flake = {
       url = "github:gvolpe/nfsm";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +42,7 @@
       home-manager,
       plasma-manager,
       nvf,
+      flatpaks,
       ...
     }:
 
@@ -62,6 +67,7 @@
           inherit system;
           modules = [
             nvf.nixosModules.default
+            flatpaks.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             {
               home-manager = {
