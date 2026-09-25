@@ -26,8 +26,8 @@
       url = "github:noctalia-dev/noctalia/cachix";
     };
 
-    flatpaks = {
-      nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nix-flatpaks = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
     nfsm-flake = {
@@ -42,7 +42,7 @@
       home-manager,
       plasma-manager,
       nvf,
-      flatpaks,
+      nix-flatpaks,
       ...
     }:
 
@@ -55,9 +55,6 @@
       hardware = builtins.map (name: import (./hardware/${name})) (
         builtins.attrNames (builtins.readDir ./hardware)
       );
-      flatpaks = builtins.map (name: import (./flatpaks/${name})) (
-        builtins.attrNames (builtins.readDir ./flatpaks)
-      );
 
     in
 
@@ -67,7 +64,7 @@
           inherit system;
           modules = [
             nvf.nixosModules.default
-            flatpaks.nixosModules.nix-flatpak
+            nix-flatpaks.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -93,11 +90,12 @@
             ./system/system-settings.nix
             ./system/system-args.nix
 
+            ./flatpaks/flatpaks.nix
+
             ./nix/nix.nix
           ]
           ++ users
-          ++ hardware
-          ++ flatpaks;
+          ++ hardware;
         };
       };
     };

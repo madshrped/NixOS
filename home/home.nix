@@ -18,6 +18,7 @@ in
     ./modules/portals.nix
     ./modules/plasma.nix
     ./modules/noctalia/noctalia.nix
+    ./modules/kde/kdenlive.nix
   ];
 
   home = {
@@ -50,6 +51,8 @@ in
       nfsm-cli
 
       tetrio-desktop
+      prismlauncher
+
     ];
   };
 

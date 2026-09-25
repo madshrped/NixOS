@@ -69,7 +69,7 @@ layout {
         bottom 0 
     }
 }
-
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_DATA_DIRS"
 spawn-at-startup "noctalia"
 spawn-sh-at-startup "nfsm" 
 

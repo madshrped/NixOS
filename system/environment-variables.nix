@@ -13,6 +13,7 @@ in
       UTILS = "${home}/nixos/utils/";
       NOCTALIA_SETTINGS_PATH = "${home}/nixos/home/modules/noctalia/noctalia-settings.toml";
       PLASMA_CONFIG_PATH = "${home}/nixos/home/modules/plasma.nix";
+      XDG_DATA_DIRS = [ "/var/lib/flatpak/exports/share" ];
     };
   };
 }
