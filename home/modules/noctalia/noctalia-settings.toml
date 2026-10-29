@@ -26,7 +26,7 @@ order = [ "widgets" ]
     capsule_fill = "surface_variant"
     capsule_opacity = 1.0
     capsule_padding = 3.0
-    capsule_radius = 7.0
+    capsule_radius = 7
     capsule_thickness = 0.75999999046325684
     center = [ "date" ]
     concave_edge_corners = true
@@ -50,7 +50,7 @@ order = [ "widgets" ]
     radius_top_left = 5
     radius_top_right = 5
     reserve_space = true
-    scale = 0.80000001192092896
+    scale = 0.80000000447034836
     shadow = true
     show_on_workspace_switch = true
     smart_auto_hide = false
@@ -61,9 +61,6 @@ order = [ "widgets" ]
         [bar.widgets.dead_zone]
 
         [[bar.widgets.capsule_group]]
-        accordion = false
-        accordion_direction = "end"
-        enabled = true
         fill = "surface_variant"
         id = "g1"
         members = [ "cpu", "temp", "ram" ]
@@ -81,6 +78,8 @@ sync_all_monitors = false
 
 [calendar]
 enabled = false
+event_date_format = "%A %e %B"
+event_time_format = "%H:%M"
 refresh_minutes = 15
 
 [control_center]
@@ -92,8 +91,6 @@ sidebar_section = "compact"
 width = 700
 
     [control_center.calendar]
-    event_date_format = "%A %e %B"
-    event_time_format = "%H:%M"
     show_events_card = true
     show_week_numbers = false
 
@@ -149,7 +146,6 @@ magnification_scale = 1.4500000476837158
 main_axis_padding = 16
 margin_edge = 8
 margin_ends = 0
-monitors = []
 pinned = []
 position = "bottom"
 radius = 16
@@ -261,12 +257,15 @@ fingerprint = true
 lock_before_suspend = true
 monitors = []
 tint_intensity = 0.30000001192092896
+transition = [ "fade" ]
+transition_duration = 400
 wallpaper = ""
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
 widget_order = [
+    "lockscreen-login-box@DP-1",
     "lockscreen-login-box@HDMI-A-1",
     "lockscreen-login-box@eDP-1",
     "lockscreen-widget-0000000000000001",
@@ -278,6 +277,33 @@ widget_order = [
     major_interval = 4
     visible = true
 
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1920.0
+    cy = 1978.0
+    output = "DP-1"
+    placement_height = 2160.0
+    placement_width = 3840.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 196.0
     box_width = 720.0
@@ -285,8 +311,8 @@ widget_order = [
     cy = 957.0
     enabled = true
     output = "HDMI-A-1"
-    placement_height = 0.0
-    placement_width = 0.0
+    placement_height = 2160.0
+    placement_width = 3840.0
     rotation = 0.0
     type = "login_box"
 
@@ -375,7 +401,7 @@ temperature_day = 6500
 temperature_night = 4000
 
 [notification]
-background_opacity = 0.97000002861022949
+background_opacity = 0.9700000286102296
 border = true
 collapse_on_dismiss = true
 enable_daemon = true
@@ -391,7 +417,7 @@ show_actions = true
 show_app_name = true
 
 [osd]
-background_opacity = 0.97000002861022949
+background_opacity = 0.9700000286102296
 border = true
 enabled = true
 monitors = []
@@ -409,7 +435,7 @@ scale = 1.0
     dnd = true
     keyboard_backlight = true
     keyboard_layout = true
-    lock_keys = true
+    lock_keys = false
     media = true
     nightlight = true
     power_profile = true
@@ -459,7 +485,7 @@ launch_apps_custom_command = ""
 niri_overview_type_to_launch_enabled = true
 offline_mode = false
 password_style = "default"
-polkit_agent = false
+polkit_agent = true
 popup_borders = true
 popup_shadows = true
 screen_time_enabled = false
@@ -484,8 +510,10 @@ time_format = "{:%H:%M}"
     app_grid = false
     auto_paste = "auto"
     categories = true
+    category_icons_only = true
     compact = false
     fetch_exchange_rates = true
+    layout = "simple"
     pinned = []
     provider_prefix = "/"
     show_app_actions = false
@@ -526,7 +554,7 @@ time_format = "{:%H:%M}"
     [shell.privacy]
     cam_filter_regex = ""
     mic_filter_regex = ""
-    screen_filter_regex = ""
+    screen_filter_regex = "j "
 
     [shell.screen_corners]
     enabled = false
@@ -672,13 +700,22 @@ fill_mode = "crop"
 per_monitor_directories = false
 transition = [ "fade", "wipe", "disc", "stripes", "zoom", "honeycomb" ]
 transition_duration = 1500.0
-transition_on_startup = false
+transition_on_startup = true
 
     [wallpaper.automation]
     enabled = false
     interval_seconds = 1800
     order = "random"
     recursive = true
+
+    [wallpaper.default]
+    path = "/home/mads/Pictures/Wallpapers/planeter.jpg"
+
+    [wallpaper.last]
+    path = "/home/mads/Pictures/Wallpapers/planeter.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/mads/Pictures/Wallpapers/planeter.jpg"
 
 [weather]
 effects = true

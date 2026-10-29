@@ -18,7 +18,6 @@ in
     ./modules/portals.nix
     ./modules/plasma.nix
     ./modules/noctalia/noctalia.nix
-    ./modules/kde/kdenlive.nix
   ];
 
   home = {

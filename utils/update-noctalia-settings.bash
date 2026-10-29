@@ -1,1 +1,2 @@
-noctalia config export full >"$NOCTALIA_SETTINGS_PATH"
+noctalia config export merged >"$NOCTALIA_SETTINGS_PATH"
+echo "Noctalia settings updated"
